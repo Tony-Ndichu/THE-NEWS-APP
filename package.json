@@ -36,5 +36,9 @@
         "webpack": "^4.26.1",
         "webpack-cli": "^3.1.2",
         "vue-loader": "^15.4.2"
+    },
+    "dependencies": {
+        "vue-axios": "^3.2.0",
+        "vue-router": "^3.4.9"
     }
 }

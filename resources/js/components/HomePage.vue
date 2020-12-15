@@ -27,7 +27,7 @@
               </transition>
           </div> 
         </div>
-        <button class="bg-red-400 text-white py-1 px-3 rounded-full font-bold shadow my-3 " @click.prevent="addReading">Add reading</button>
+        <button class="bg-red-400 text-white py-1 px-3 rounded-full font-bold shadow my-3 " @click.prevent="fetchNewArticles">FetchNewReadings</button>
       </div>
   </div>
   </div>
@@ -48,10 +48,14 @@ export default class HomePage extends Vue {
       toRead:Array<ArticleType> = [];
       selectedArticle?: ArticleType | null = null;
       fetchedReadings: Array<ArticleType> = [];
+      links: Array<string> = [];
+      nextPageUrl: string = "" 
       created() {
-              ArticleService.fetchAllArticles().then(response => {
-                      this.toRead = response.data.data;
-                      console.log("response==========>", response.data.data);
+              ArticleService.fetchArticles().then(response => {
+                      const { links, data, next_page_url } = response.data.data;
+                      console.log("response.data.data==========>", response.data.data)
+                      this.toRead = data;
+                      this.nextPageUrl = next_page_url;
                   });
         }
     get readingStatus():string {
@@ -60,37 +64,16 @@ export default class HomePage extends Vue {
       if (this.toRead.length == 0) return "Get reading!"
       return "hmm - this is strange";
     }
-  // methods: {
-    // // add a new article to the reading list
-    // addReading() {
-    //   //include depedencny
-    //   const axios = require('axios');
-    //   // create get call to grab list of potential article soruces
-    //   try {
-    //     axios.get("/test-data.json").then(response => {
-    //         // response          
-    //         let res = response;
-    //         // data from response
-    //         let data = res.data;
-    //         // make random number 
-    //         let r = Math.max(Math.floor(Math.random() * 5) - 1,0);
-    //         // get random article
-    //         let ra = data.results[r];
-    //         // update the state
-    //         this.toRead.push(ra);
-    //     });
-    //   }
-    //   catch (error) {
-    //     alert(error);
-    //   }
-    
-    // },
-    public addReading(): void {
-      ArticleService.fetchNewArticles().then(response => {
-                      this.toRead = response.data.data;
-                      console.log("response==========>", response.data.data);
-                  });
+
+    public fetchNewArticles(): void {
+        ArticleService.fetchNewArticles(this.nextPageUrl).then(response => {
+          const { links, data, next_page_url } = response.data.data;
+            console.log("response.data.data==========>", response.data.data)
+            this.toRead = data;
+            this.nextPageUrl = next_page_url;
+        });
     }
+
     public checkIsSelectedArticle(article: ArticleType): boolean {
       try{
         return this.selectedArticle.title == article.title;

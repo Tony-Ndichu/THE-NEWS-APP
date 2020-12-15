@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import api from "../utils/api";
 
 class ArticleService {
-    async fetchAllArticles(): Promise<AxiosResponse> {
+    async fetchArticles(): Promise<AxiosResponse> {
         return axios.get(`${api.baseUrl}/readings`);
     }
 
@@ -12,8 +12,8 @@ class ArticleService {
         });
     }
 
-    async fetchNewArticles(): Promise<AxiosResponse> {
-        return axios.get(`${api.baseUrl}/readings/new`);
+    async fetchNewArticles(nextPageUrl: string): Promise<AxiosResponse> {
+        return axios.get(nextPageUrl);
     }
 }
 

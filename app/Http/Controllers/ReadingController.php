@@ -17,17 +17,11 @@ class ReadingController extends Controller
     public function index()
     {
         // all readings
-        $unreadNews = [];
-        $readings = Reading::all()->toArray();
-        foreach ($readings as $reading) {
-            if ($reading['read_status'] == 0) {
-                array_push($unreadNews, $reading);
-            }
-        }
+        $readings = Reading::where('read_status', 0)->paginate(4);
         
         return response([
                     "status" => "success",
-                    "data" =>  $unreadNews 
+                    "data" =>  $readings 
                     ],  200)
                   ->header('Content-Type', 'application/json');
     }
@@ -66,4 +60,5 @@ class ReadingController extends Controller
             ],  200)
           ->header('Content-Type', 'application/json');
     }
+
 }

@@ -20,7 +20,10 @@ class CreateReadingsTable extends Migration
             $table->string('title');
             $table->string('url');
             $table->text('abstract');
+            $table->string('author');
+            $table->text('image_url');
             $table->integer('read_status')->default(0);
+            $table->string('publishedAt');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

@@ -16,6 +16,7 @@ use App\Http\Controllers\ReadingController;
 */
 
 Route::get('readings', [ReadingController::class, 'index']);
+Route::get('readings/new', [ReadingController::class, 'new']);
 Route::group(['prefix' => 'reading'], function () {
     Route::post('add', [ReadingController::class, 'add']);
     Route::post('update', [ReadingController::class, 'update']);

@@ -6,6 +6,7 @@
         "watch": "npm run development -- --watch",
         "watch-poll": "npm run watch -- --watch-poll",
         "prod": "npm run production",
+        "postinstall": "npm run prod",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=webpack.config.js"
     },
     "devDependencies": {

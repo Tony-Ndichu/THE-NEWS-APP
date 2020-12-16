@@ -12,9 +12,7 @@ class CreateReadingsTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::dropIfExists('readings');
-        
+    {        
         Schema::create('readings', function (Blueprint $table) {
             $table->id();
             $table->string('title');

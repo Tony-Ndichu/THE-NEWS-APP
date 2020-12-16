@@ -3,7 +3,9 @@
 
 # The Task I picked: Task Option 2: Fullstack (Laravel + Vue)
 
-[Link to live application running on Heroku](https://tonys-news-app-generator.herokuapp.com/)
+- [Link to live application on Heroku](https://tonys-news-app-generator.herokuapp.com/)
+- [Link to first zoom video](https://www.loom.com/share/fb898c5e81b34662ba6414686d9f727e)
+- [Link to second zoom video](https://www.loom.com/share/802fd281e07f4236a503edf98bcfd7fd)
 ## Time taken
 
 - 7 days

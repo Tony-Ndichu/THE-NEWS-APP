@@ -11,10 +11,12 @@
 ## How to run the app locally
 
 - clone this repository `git clone https://github.com/Tony-Ndichu/THE-NEWS-APP.git`
+- cd into the folder `cd THE-NEWS-APP`
 - run `npm install`
+- run `composer install`
 - create a `.env` file `touch .env`
 - copy the following values to the `.env` file
-
+    - APP_ENV=development
     - APP_KEY=base64:L3haVZZ7ITr92A2+6BdCgCfMk3IGbi3mvo6bBv/GKPw=
     - APP_URL=http://localhost
     - DB_CONNECTION=mysql

@@ -22,7 +22,7 @@
     </head>
     <body class="antialiased">
             <div id="app"><homepage></homepage></div>
-            <script src="js/app.js"></script>
+            <script src="{{ secure_asset('js/app.js') }}"></script>
     </body>
 </html>
 

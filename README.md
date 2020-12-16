@@ -1,61 +1,76 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## NoMore 2020 Front-end OR FullStack developer test
+# The News App
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# The Task I picked: Task Option 2: Fullstack (Laravel + Vue)
 
-## About Laravel
+[Link to live application running on Heroku](https://tonys-news-app-generator.herokuapp.com/)
+## Time taken
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- 7 days
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## How to run the app locally
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- clone this repository `git clone https://github.com/Tony-Ndichu/THE-NEWS-APP.git`
+- run `npm install`
+- create a `.env` file `touch .env`
+- copy the following values to the `.env` file
 
-## Learning Laravel
+    - APP_KEY=base64:L3haVZZ7ITr92A2+6BdCgCfMk3IGbi3mvo6bBv/GKPw=
+    - APP_URL=http://localhost
+    - DB_CONNECTION=mysql
+    - DB_CONNECTION_2=mysql_2
+    - DB_DATABASE=thenewsapp
+    - DB_DATABASE_2=thenewsapptest
+    - DB_HOST=34.121.115.5
+    - DB_PASSWORD=rootpassword
+    - DB_PORT=3306
+    - DB_USERNAME=root
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- make the file `setup.sh` executable `chmod +x setup.sh`
+- run the file `./setup.sh` and wait for the message `Cron Job Ended` to show on the terminal
+- run `php artisan serve`
+- visit `localhost:8000`
+- voila, presenting **The News App**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Testing the app
 
-## Laravel Sponsors
+- create a `.env.testing` file `touch .env.testing`
+- copy the following values to the `.env.testing` file
+    - DB_CONNECTION=mysql
+    - DB_HOST=34.121.115.5
+    - DB_PORT=3306
+    - DB_DATABASE=thenewsapptest
+    - DB_USERNAME=root
+    - DB_PASSWORD=rootpassword
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- run the command `php artisan optimize` 
+- finally run the command `php artisan test`
+## Improvements added
+### Laravel BackEnd 
 
-### Premium Partners
+- added a laravel backend to better manage and scale the application
+- added a mysql instance to enable persistence. The mysql instance is hosted on gcloud for maximum availability
+- integrated a [live news api](https://newsapi.org/) that shows users rich real time news including images, author name, links to the news and date of publishing
+- added a cron job and artisan command `php artisan news:fetch` that updates the database with new news every 24 hours to ensure users get only the latest news
+- added unit tests
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
+### VueJS FrontEnd
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- implemented typescript
+- used Vue-decorators instead of basic JS approach 
+- switched to grid design to improve the ui
+- made the site responsive to both mobile and desktop
+- enriched user experience by adding pagination
+- added a loader to ensure the user is aware when the app is fetching data
+- added images and fontawesome icons to enrich the UI and UX
 
-## Code of Conduct
+## What I would do if I had more time
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- added more endpoints to the api including filtering the news by topic
+- added more robust tests
+- added optimizations to make the integration with the news api faster
+- added a richer frontend design in terms of styling, typography and colors
+- made the app more secure by adding some of the more sensitive credentials to the environment variables
+- hosted the app on gcloud for maximum availability and optimized load times.
+ 

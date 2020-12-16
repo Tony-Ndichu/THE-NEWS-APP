@@ -41,7 +41,8 @@ class NewsCron extends Command
     public function handle()
     {
         Log::info('Cron Job Started');
-        $response = Http::get('https://newsapi.org/v2/top-headlines?country=us&apiKey=1594b4ffb97e4bf5af73f2ebca31efc2');
+        echo "Cron Job Started";
+        $response = Http::get('https://newsapi.org/v2/everything?q=bitcoin&apiKey=1594b4ffb97e4bf5af73f2ebca31efc2');
 
         foreach($response['articles'] as $article){
 
@@ -50,12 +51,17 @@ class NewsCron extends Command
                 [
                     "title" => $article['title'],
                     "url" => $article['url'],
+                    "author" => !empty($article['author']) ? $article['author']: 'Unknown author',
                     "abstract" => $article['description'],
+                    "image_url" => !empty($article['urlToImage']) ? $article['urlToImage'] : '',
+                    "publishedAt" => $article['publishedAt'],
                 ]
             ]);
                 }
         }
         Log::info('Cron Job Ended');
-        // DB::table('readings')->insert($response->json());
+        echo "\r\n";
+        echo "Cron Job Ended";
+        echo "\r\n";
     }
 }

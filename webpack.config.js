@@ -49,7 +49,7 @@ module.exports = () => ({
                   'vue-style-loader',
                   'css-loader',
                 ]
-              }
+            }
         ],
     },
     plugins: [

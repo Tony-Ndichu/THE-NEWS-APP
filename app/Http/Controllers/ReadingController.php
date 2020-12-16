@@ -17,7 +17,7 @@ class ReadingController extends Controller
     public function index()
     {
         // all readings
-        $readings = Reading::where('read_status', 0)->paginate(4);
+        $readings = Reading::where('read_status', 0)->paginate(6);
         
         return response([
                     "status" => "success",

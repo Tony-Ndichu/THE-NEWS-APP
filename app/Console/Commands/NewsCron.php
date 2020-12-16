@@ -41,13 +41,28 @@ class NewsCron extends Command
     public function handle()
     {
         Log::info('Cron Job Started');
+        echo "\r\n";
         echo "Cron Job Started";
+        echo "\r\n";
+        echo "Seeding database and test database";
+        echo "\r\n";
         $response = Http::get('https://newsapi.org/v2/everything?q=bitcoin&apiKey=1594b4ffb97e4bf5af73f2ebca31efc2');
 
         foreach($response['articles'] as $article){
 
             if (!is_null($article['description'])) {
-            DB::table('readings')->insert([
+            DB::connection('mysql')->table('readings')->insert([
+                [
+                    "title" => $article['title'],
+                    "url" => $article['url'],
+                    "author" => !empty($article['author']) ? $article['author']: 'Unknown author',
+                    "abstract" => $article['description'],
+                    "image_url" => !empty($article['urlToImage']) ? $article['urlToImage'] : '',
+                    "publishedAt" => $article['publishedAt'],
+                ]
+            ]);
+
+            DB::connection('mysql_2')->table('readings_test')->insert([
                 [
                     "title" => $article['title'],
                     "url" => $article['url'],

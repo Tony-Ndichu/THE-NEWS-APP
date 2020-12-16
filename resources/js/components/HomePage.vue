@@ -25,7 +25,7 @@
                   </div>
                   </div>
                </div>
-               <div else="loading">
+               <div v-else>
                   <loader />
                 </div>
                </div>
